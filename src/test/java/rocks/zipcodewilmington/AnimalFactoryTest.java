@@ -1,7 +1,9 @@
 package rocks.zipcodewilmington;
 
+import org.junit.Assert;
 import org.junit.Test;
 import rocks.zipcodewilmington.animals.Animal;
+import rocks.zipcodewilmington.animals.Cat;
 import rocks.zipcodewilmington.animals.Dog;
 
 import java.util.Calendar;
@@ -15,14 +17,44 @@ public class AnimalFactoryTest {
     //TODO - Create Test for `Animal createCat(String name, Date birthDate)`
 
     @Test
-    public void TestCreateDog(String name, Date birthDate) {
+    public void TestCreateDog() {
         //Given
-        Date expectedDate = new Date(2024, Calendar.FEBRUARY, 1);
-        String expectedName = "Mittens";
+        Date expectedDate = new Date();
+        String expectedName = "Tuckie";
+        Integer expectedID = 2;
 
         //When
-        Animal dog = new Animal(expectedName, expectedDate)
+        Dog dog = new Dog(expectedName, expectedDate, expectedID);
+
+        //Then
+        String actualName = dog.getName();
+        Date actualDate = dog.getBirthDate();
+        Integer actualID = dog.getId();
+
+        Assert.assertEquals(expectedName, actualName);
+        Assert.assertEquals(expectedDate, actualDate);
+        Assert.assertEquals(expectedID, actualID);
 
 
+    }
+
+    @Test
+    public void TestCreateCat(){
+        //Given
+        Date expectedDate = new Date();
+        String expectedName = "Mittens";
+        Integer expectedID = 2;
+
+        //When
+        Cat cat = new Cat(expectedName, expectedDate, expectedID);
+
+        //Then
+        String actualName = cat.getName();
+        Date actualDate = cat.getBirthDate();
+        Integer actualID = cat.getId();
+
+        Assert.assertEquals(expectedName, actualName);
+        Assert.assertEquals(expectedDate, actualDate);
+        Assert.assertEquals(expectedID, actualID);
     }
 }
