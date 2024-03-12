@@ -23,45 +23,66 @@ public class CatHouseTest {
     @Test
     public void testAddCat(){
         //Given
-        String expectedName = "Mittens";
-        Integer expectedID = 2;
-        Date expectedDate = new Date();
+        Cat cat = new Cat("mittens", null, 2454);
+        Integer expectedCats = 1;
 
         //When
-        Cat cat = new Cat(expectedName, expectedDate, expectedID);
+        CatHouse.add(cat);
+        Integer actualCats = CatHouse.getNumberOfCats();
 
         //Then
-        String actualName = cat.getName();
-        Date actualDate = cat.getBirthDate();
-        Integer actualID = cat.getId();
-
-        Assert.assertEquals(expectedName, actualName);
-        Assert.assertEquals(expectedDate, actualDate);
-        Assert.assertEquals(expectedID, actualID);
+        Assert.assertEquals(expectedCats, actualCats);
 
     }
 
     @Test
-    public void testRemoveCat1(){
+    public void testRemoveIntegerId(){
         //Given
-        Integer expectedID = 2;
+        Cat cat = new Cat("mittens",null,20);
+        Integer expectedCats = CatHouse.getNumberOfCats();
+
 
         //When
+        CatHouse.add(cat);
+        CatHouse.remove(20);
+        Integer actualCats = CatHouse.getNumberOfCats();
 
         //Then
-
-
+        Assert.assertEquals(expectedCats, actualCats);
+        CatHouse.clear();
     }
 
     @Test
-    public void testRemoveCat2(){
+    public void testRemoveCat(){
         //Given
+        Cat cat = new Cat("mittens" , null, 25);
+        Integer expectedCats = CatHouse.getNumberOfCats();
+
+        //When
+        CatHouse.add(cat);
+        CatHouse.remove(cat);
+        Integer actualCats = CatHouse.getNumberOfCats();
+
+        //Then
+       Assert.assertEquals(expectedCats, actualCats);
+       CatHouse.clear();
 
     }
 
     @Test
     public void testGetCatById(){
         //Given
+        Cat cat = new Cat("mittens", null, 5674);
+        Cat expectedId = cat;
+        //When
+        CatHouse.add(cat);
+        Cat actualId = CatHouse.getCatById(5674);
+
+        //Then
+        Assert.assertEquals(expectedId, actualId);
+        CatHouse.clear();
+
+
 
     }
 
