@@ -135,4 +135,18 @@ public class CatTest {
         Assert.assertTrue(cat instanceof Mammal);
     }
 
+    @Test
+    public void testSetName(){
+        //Given
+        String expectedName = "mittens";
+
+        //When
+        Cat cat = new Cat(expectedName,null,null);
+        cat.setName(expectedName);
+        String actualName = cat.getName();
+
+        //Then
+        Assert.assertEquals(expectedName, actualName);
+    }
+
 }

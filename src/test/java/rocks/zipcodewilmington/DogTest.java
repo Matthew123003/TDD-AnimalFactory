@@ -75,6 +75,7 @@ public class DogTest {
 
         //When
         Dog dog = new Dog(null,givenDate,null);
+        dog.setBirthDate(givenDate);
         Date actualDate = dog.getBirthDate();
 
         //Then
@@ -126,5 +127,5 @@ public class DogTest {
         Dog dog = new Dog(null, null, null);
         Assert.assertTrue(dog instanceof Mammal);
     }
-
+    
 }
